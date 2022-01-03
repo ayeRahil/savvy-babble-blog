@@ -6,17 +6,15 @@ from django.urls import reverse_lazy
 from .forms import EditProfileForm, SignUpForm, ProfilePageForm
 from django.contrib.auth.views import PasswordChangeView
 from main.models import Profile
-from django.views.decorators.csrf import requires_csrf_token
-
 # Create your views here.
 
-@requires_csrf_token
+
 class UserRegisterView(generic.CreateView):
     form_class = SignUpForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
 
-@requires_csrf_token
+
 class UserEditView(generic.UpdateView):
     #form_class = UserChangeForm
     form_class = EditProfileForm
@@ -31,7 +29,7 @@ class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangeForm
     success_url = reverse_lazy('home')
 
-@requires_csrf_token
+
 class EditProfileView(generic.UpdateView):
     model = Profile
     template_name = 'registration/edit_profile.html'
@@ -45,7 +43,7 @@ class EditProfileView(generic.UpdateView):
         context['page_user'] = page_user
         return context """
 
-@requires_csrf_token
+
 class CreateProfileView(CreateView):
     model = Profile
     form_class = ProfilePageForm

@@ -7,9 +7,6 @@ from django.views.generic import FormView
 from django.urls import reverse
 from .forms import PostForm, UpdateForm, CommentForm
 from django.urls import reverse_lazy
-from django.views.decorators.csrf import requires_csrf_token
-
-
 
 # Create your views here.
 
@@ -55,7 +52,6 @@ class ArticleDetailView(DetailView):
         context['form'] = CommentForm()
         return context
 
-@requires_csrf_token
 class PostComment(SingleObjectMixin, FormView):
     model = Post
     form_class = CommentForm
@@ -92,13 +88,12 @@ class PostDetailView(View):
         return view(request, *args, **kwargs)
 
 
-@requires_csrf_token
+
 class CreateArticleView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'main/create_article.html'
     #fields = '__all__'
-
 
 class CreateCategoryView(CreateView):
     model = Category
@@ -111,7 +106,7 @@ def CategoryView(request, cats):
     return render(request, 'main/categories.html', {'cats':cats.title().replace('-', ' '),'category_post':category_post})
 
 
-@requires_csrf_token
+
 class UpdateArticleView(UpdateView):
     model = Post
     form_class = UpdateForm
