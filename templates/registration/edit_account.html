@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'stylecss/article_detail.css' %}">
+
+
+    
+
+<center>
+    <form id="align-form" method="post" style="width:800px; height:100%;">
+        <h1>Edit Account</h1>
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        <a href="{% url 'password-change' %}"><h3 style="color:white;">Click here to change Password</h3></a>
+        
+        <div class="form-group"> <button type="submit" id="post" class="btn" style="width:100px; height:100;">Update Profile</button> 
+            
+        </div>
+        
+
+       
+    </form>
+    </center>
+
+
+
+<!-- <div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        
+        <a href="{% url 'password-change' %}"><h4>Click here to change Password</h4></a>
+        <button class="btn btn-info">Update Profile</button>
+    </form>
+    
+</div> -->
+
+{% endblock %}

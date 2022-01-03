@@ -1,0 +1,15 @@
+html{
+
+    background: rgba(0,152,155,1);  
+    background: -webkit-linear-gradient(to right, rgba(0,152,155,1), rgba(0,94,120,1)); 
+    background: linear-gradient(to right, rgba(0,152,155,1), rgba(0,94,120,1)); 
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* h1,h2,h3,h4,h5,h6,p{
+    color: white;
+} */

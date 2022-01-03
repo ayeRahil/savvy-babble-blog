@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+
+<h1>Authors</h1>
+
+
+<!-- {% if author_post %} -->
+        <!-- <h1>Author : {{ pk }}</h1> -->
+        <ul>
+            {% for post in authorpost_list %}
+
+            <li><a href="#">{{ post.title }}
+                <br><br>
+            {{ post.body|slice:":50"|safe }}</li>
+            <br><br>
+            {% endfor %}
+        </ul>
+<!-- {% else %}
+
+        <h1>Sorry this page does not exist</h1>
+
+{% endif %} -->
+
+
+
+
+
+
+<!-- {% include 'main/dummyauthor.html' %} -->
+{% endblock %}

@@ -1,0 +1,32 @@
+
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    <h1>Create a new Article</h1>
+<div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+
+        <h3>To add a category <a href="{% url 'add-category' %}">click here</a></h3>
+
+        <button type="submit" class="btn btn-info">Submit</button>
+        <button type="reset" class="btn btn-info">Reset</button>
+    </form>
+</div>
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById('author').value = name;
+</script>
+
+   
+{% else %}
+    <h1>Hey Snoopy... You need to login to contiune</h1>
+
+{% endif %}
+{% endblock %}

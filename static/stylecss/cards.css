@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+
+@media screen and (min-width: 500px) {
+  .card {
+    min-width: 300px;
+    min-height: 400px;
+  }
+}
+
+
+.cards {
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: center;
+  /* align-items: center; */
+  box-sizing: border-box;
+  /* max-width: 2156.23px; */
+  
+  
+}
+
+
+
+.card__like {
+    width: 18px;
+}
+
+.card__clock {
+    width: 15px;
+  vertical-align: middle;
+  color: rgba(0,152,155,1);
+}
+.card__time {
+    font-size: 12px;
+    color: rgba(0,152,155,1);
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.card__clock-info {
+    padding-right: 10%;
+    float: right;
+}
+
+.card__img{
+  visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 205px;
+  border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+
+}
+
+.card__info-hover {
+    position: absolute;
+    padding: 16px;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+}
+
+.card__img--hover{
+  transition: 0.2s all ease-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+  position: absolute;
+    height: 205px;
+  border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+top: 0;
+/* object-fit: fill; */
+}
+.card {
+  margin: 25px 15px 15px 15px;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #fff;
+  width: 20%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+  max-height: 420px;
+}
+.card:hover {
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+    transform: scale(1.10, 1.10);
+    margin: 50px 10px 10px 10px;
+}
+
+.card__info {
+z-index: 2;
+  background-color: #fff;
+  border-bottom-left-radius: 12px;
+border-bottom-right-radius: 12px;
+   padding: 16px 24px 24px 24px;
+}
+
+.card__category {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+  color: #868686;
+}
+
+.card__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: 'Roboto Slab', serif;
+    color: #000000;
+}
+
+.card-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* color: #868686; */
+    color: #000000;
+}
+.card__by {
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.card__author {
+    font-weight: 600;
+    text-decoration: none;
+    /* color: #AD7D52; */
+    color: rgba(0,152,155,1);
+}
+
+.card:hover .card__img--hover {
+    height: 100%;
+    opacity: 0.3;
+}
+
+.card:hover .card__info {
+    background-color: transparent;
+    position: relative;
+}
+
+.card:hover .card__info-hover {
+    opacity: 1.5;
+}
+
+/* .card__info .icons {
+  display: inline-block;
+}*/
+
+ .card__info .icons{
+  /* position: relative;
+  fill: #000000;
+  color: #000000;
+  height: 130px;
+  top: 226px;
+  width: 50px; */
+  display: flex;
+  color: #000000;
+  fill: #000000;
+  /* flex-direction: row;
+  align-items: center; */
+  justify-content: space-around;
+  margin-top: 10px;
+    margin-bottom: 10px;
+} 
+
+.card__info a:visited {
+  color: #000000;
+  
+}

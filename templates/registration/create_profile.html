@@ -1,0 +1,47 @@
+
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'stylecss/article_detail.css' %}">
+
+{% if user.is_authenticated %}
+
+   <!--  <h1>Create Your Profile</h1>
+<div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+
+        
+
+        <button type="submit" class="btn btn-info">Submit</button>
+        <button type="reset" class="btn btn-info">Reset</button>
+    </form>
+</div> -->
+
+<center>
+    <form id="align-form" method="post" style="width:800px; height:100%;">
+        <h1>Create Your Profile</h1>
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <div class="form-group"> <button type="submit" id="post" class="btn" style="width:100px; height:100;">Submit</button> 
+            <button type="reset" id="post" class="btn" style="width:100px; height:100;">Reset</button> 
+        </div>
+        
+
+       
+    </form>
+    </center>
+
+
+
+   
+{% else %}
+    <h1>Hey Snoopy... You need to login to contiune</h1>
+
+{% endif %}
+{% endblock %}

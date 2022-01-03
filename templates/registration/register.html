@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'stylecss/article_detail.css' %}">
+
+
+
+<form id="align-form" method="POST" style="width:800px; height:100%;">
+    <h3>Register</h3>
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    
+    <div class="form-group"> <button type="submit" id="post" class="btn">Register</button> </div>
+   
+</form>
+
+
+
+<!--     <h1>Register</h1>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        
+
+        <button class="btn btn-info">Register</button>
+    </form>
+</div> -->
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'stylecss/cards.css' %}">
+    <script src="https://use.fontawesome.com/657b132719.js"></script>
+</head>
+<body>
+    <section class="cards">
+      
+        {% for auth in authors %}
+        <article class="card card--1">
+            
+          
+          <div class="card__img" style="background-image: url('{{ auth.authorImage.url }}');"></div>
+          <a href="#" class="card_link">
+             <div class="card__img--hover" style="background-image: url('{{ auth.authorImage.url }}');"></div>
+           </a>
+          <div class="card__info">
+            
+            <h3 class="card__title">{{ auth.user.first_name }} {{ auth.user.last_name }}</h3>
+            <span class="card__category">{{ auth.user.post.category }}</span>
+            <p class="card-text">{{ auth.bio }}</p>
+            <div class="icons">
+                {% if auth.github_url %}
+                <a href="{{ auth.github_url }}"><i class="fa fa-github" aria-hidden="true"></i></a>
+                {% endif %}
+
+                {% if auth.instagram_url %}
+                <a href="{{ auth.instagram_url }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                {% endif %}
+
+                {% if author.linkedin_url %}
+                <a href="{{ author.linkedin_url }}"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                {% endif %}
+
+                {% if auth.twitter_url %}
+                <a href="{{ auth.twitter_url }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                {% endif %}
+
+                {% if auth.facebook_url %}
+                <a href="{ auth.facebook_url }"></a><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                {% endif %}
+              </div>
+            
+              
+        </span>
+        </div>
+        </article>
+        {% endfor %}
+        
+    </section>
+</body>
+</html>

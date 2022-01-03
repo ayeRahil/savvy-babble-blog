@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Bar</title>
+    <link rel="stylesheet" href="{% static 'background/nav.css' %}">
+</head>
+<body>
+    <nav>
+        
+    <div class="container">
+        <a href="#" class="brand-logo">Savvy Babble</a>
+       <!--  <div class="right"> -->
+            
+                
+          
+        <ul class="nav">
+            <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'all-article' %}">Articles</a></li>
+               <!--  <li><a href="{% url 'authors' %}">Authors</a></li>
+                <li><a href="#">Contact</a></li> -->
+            {% if user.is_authenticated %}
+                <!-- <li><a href="{% url 'add-article' %}">Add Post</a></li> -->
+                <!-- <li><a href="{% url 'add-category' %}">Add Category</a></li> -->
+                <li><a href="{% url 'edit-account' %}">Account</a></li>
+
+            {% if user.profile.id %}
+                <li><a href="{% url 'edit-profile' user.profile.id %}">Profile</a></li>
+            {% else %}
+                <li><a href="{% url 'create-profile' %}">Profile</a></li>
+            {% endif %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+
+            {% endif %}
+            
+            
+        </ul>
+    <!-- </div> -->
+</div>
+</nav>
+</body>
+</html>

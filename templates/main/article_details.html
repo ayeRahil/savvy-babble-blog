@@ -1,0 +1,188 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'stylecss/cards.css' %}">
+<link rel="stylesheet" href="{% static 'stylecss/article_detail.css' %}">
+    <script src="https://use.fontawesome.com/657b132719.js"></script>
+
+
+
+
+<div class="contain" style="width:70%; float:left">
+    <div class="left">
+<center><h1>{{ post.title }}</h1>
+    <span class="card__category" style="text-transform: uppercase;"><a href="{% url 'category' post.category %}">{{ post.category }}</a></span>
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
+    <small><a href="{% url 'update-article' post.pk %}">Edit</a></small>
+    <small><a href="{% url 'delete-article' post.pk %}">Delete</a></small>
+{% endif %}
+{% endif %}
+
+<h2>Created on {{ post.created_on }}</h2>
+<h2>Written By: 
+
+    
+    <a href="#"> 
+        {{ post.author.first_name }} {{ post.author.last_name }}
+    </a>
+    
+    
+</h2>
+</center>
+<p>
+    <h3>
+    {{ post.body|safe }}
+</h3>
+
+
+</p>
+</div>
+</div>
+<!-- <div class="fix" style="width:25%; right:5px;"> -->
+<!-- <div class="contain" style="right:15px; position: fixed; padding-bottom: 20px; max-height:500px; min-width:390px;">
+    
+        
+        <img src="{{ post.author.profile.authorImage.url }}" width="150px" height="200px" class="rounded" style="border-radius: 30px;">
+        <h2>{{ post.author.first_name }} {{ post.author.last_name }}</h2>
+        <h3>{{ post.author.profile.bio }}</h3>
+
+        <div class="icons">
+            {% if post.author.profile.github_url %}
+            <a href="{{ post.author.profile.github_url }}"><i class="fa fa-github" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if post.author.profile.instagram_url %}
+            <a href="{{ post.author.profile.instagram_url }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if post.author.profile.linkedin_url %}
+            <a href="{{ post.author.profile.linkedin_url }}"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if post.author.profile.twitter_url %}
+            <a href="{{ post.author.profile.twitter_url }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if post.author.profile.facebook_url %}
+            <a href="{ post.author.profile.facebook_url }"></a><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            {% endif %}
+          </div>
+
+
+</div> -->
+
+
+
+
+<!-- <section class="cards"> -->
+    
+    <div class="fix" style="right:5px;">
+    <article class="card card--1" style="width:20%; float:right">
+      
+      
+      <div class="card__img" style="background-image: url('{{ post.author.profile.authorImage.url }}');"></div>
+      <a href="#" class="card_link">
+         <div class="card__img--hover" style="background-image: url('{{ post.author.profile.authorImage.url }}');"></div>
+       </a>
+      <div class="card__info">
+        
+        <h3 class="card__title">{{ post.author.first_name }} {{ post.author.last_name }}</h3>
+        <span class="card__category"> {{ post.category }}</span>
+        <p class="card-text">{{ post.author.profile.bio |safe }}</p>
+        
+        <ul>
+                {% for a in article.latest_10_articles %}
+                <li>
+                    <h4>{{ a }}</h4>
+                </li>
+                {% endfor %}
+        </ul>
+
+        <div class="icons">
+            {% if post.author.profile.github_url %}
+            <a href="{{ post.author.profile.github_url }}"><i class="fa fa-github" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if post.author.profile.instagram_url %}
+            <a href="{{ post.author.profile.instagram_url }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if post.author.profile.linkedin_url %}
+            <a href="{{ post.author.profile.linkedin_url }}"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if post.author.profile.twitter_url %}
+            <a href="{{ post.author.profile.twitter_url }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if post.author.profile.facebook_url %}
+            <a href="{ post.author.profile.facebook_url }"></a><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            {% endif %}
+          </div>
+        
+
+    </span>
+    </div>
+    </article>
+    
+    
+<!-- </section>
+ -->
+
+
+
+</div>
+
+
+
+<section>
+    <div class="contain" style="width:70%; float:left; display:flex; flex-direction:column;">
+
+        {% if user.is_authenticated %}
+
+        <form id="align-form" method="post" enctype="multipart/form-data">
+            <h3>Leave a comment</h3>
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            
+            <div class="form-group"> <button type="submit" id="post" class="btn">Post Comment</button> </div>
+           
+        </form>
+    
+        <script>
+            var name = "{{ user.id }}";
+            document.getElementById('user').value = name;
+        </script>
+
+        {% else %}
+
+        <h2><a href="{% url 'register' %}">Register</a>/<a href="{% url 'login' %}">Login</a> to comment</h2>
+
+        {% endif %}
+
+        <div class="row">
+           
+                <div class="leftgrid">
+                <h1>{{ post.comments.all.count }} Comments</h1>
+                {% for comment in post.comments.all %}
+                <div class="comment mt-4 text-justify float-left"> <img src="{{ comment.user.profile.authorImage.url }}" class="rounded-circle" width="40" height="50">
+                    <h4>{{ comment.user.username }}</h4> <span>- {{ comment.commented_on }}</span> <br>
+                    <p>{{ comment.body | safe }}</p>
+                </div>
+                {% endfor %}
+                
+        </div>
+    </div>
+                
+        
+    </div>
+</section>
+
+
+
+
+{% endblock %}
